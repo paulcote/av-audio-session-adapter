@@ -32,11 +32,12 @@
         NSError* err = nil;
     
         if (options == 0) {
-            [[AVAudioSession sharedInstance] setCategory:value error:&err];    
-        }
+            [[AVAudioSession sharedInstance] setCategory:value error:&err];
+            [[AVAudioSession sharedInstance] setActive:YES error:nil];        }
         else {
             AVAudioSessionCategoryOptions typedOptions = (AVAudioSessionCategoryOptions)options;
             [[AVAudioSession sharedInstance] setCategory:value withOptions:typedOptions error:&err];
+            [[AVAudioSession sharedInstance] setActive:YES error:nil];
         }
         
         if (err) {
